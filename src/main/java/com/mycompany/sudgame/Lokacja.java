@@ -1,6 +1,9 @@
 
 package com.mycompany.sudgame;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class Lokacja {
     private String krotkiOpis;
@@ -23,5 +26,11 @@ public class Lokacja {
         return this.krotkiOpis + "\n" + this.dlugiOpis;
         
     }
+    private Map<Wyjscie,Lokacja> wyjscie = new HashMap<>();
+    
+    public void DodajWyjscie(Wyjscie w , Lokacja l){
+        wyjscie.put(w, l);
 
+    }
+    
 }
