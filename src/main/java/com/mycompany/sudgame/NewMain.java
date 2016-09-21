@@ -11,21 +11,21 @@ public class NewMain {
 
     public static void main(String[] args) {
     
-        String imieGracza = zapytajOimie();
-        Gracz gracz = new Gracz(imieGracza);
-        Lokacja startowaLok = new Lokacja("Lokacja startowa", "Znajdujesz sie na przykladowej lokacji startowej");
-        Lokacja NastLok = new Lokacja("Lokacja kolejna", "Znajdujesz sie na przykladowej lokacji kolejnej");
-        gracz.setAktualnaLokacja(startowaLok);
-        System.out.print(gracz.getAktualnaLokacjaOpis());
-        startowaLok.DodajWyjscie(Wyjscie.N,NastLok);
-        NastLok.DodajWyjscie(Wyjscie.S,startowaLok);
+        String playerName = askForName();
+        Player gracz = new Player(playerName);
+        Location startLoc = new Location("Start Location", "You are in start location");
+        Location NextLoc = new Location("Next Location", "You are in next example location");
+        gracz.setActualLocation(startLoc);
+        System.out.print(Player.getActualLocationDesc());
+        startLoc.addExit(Exit.N,NextLoc);
+        NextLoc.addExit(Exit.S,startLoc);
     }
 
-    private static String zapytajOimie() {
-        System.out.print("podaj imie dla gracza");
+    private static String askForName() {
+        System.out.print("type name for player: ");
         Scanner scanner = new Scanner(System.in);
         String name = scanner.nextLine();
-        System.out.print("\nWitaj " + name + "\n");
+        System.out.print("\nHello " + name + "\n");
         scanner.close();
         return name;
     }
